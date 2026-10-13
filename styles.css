@@ -1,0 +1,196 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #1c212a; 
+    color: #eeeeee; 
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2 {
+    color: #d4af37; /* Fort Knox Gold for your master headers */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Adds a heavy vault shadow for depth */
+    text-align: center; /* CENTERS both your h1 and h2 headers */
+}
+
+h1 {
+    font-size: 2.5rem; /* Makes your main title nice, big, and commanding */
+    margin-bottom: 5px; /* Keeps it closely stacked with the subtitle below it */
+}
+
+/* Centers the welcome paragraph text below the headers */
+body.home-page {
+    /* FIXED LOGIC PATH: Points directly inside your images folder */
+    background: linear-gradient(rgba(28, 33, 42, 0.9), rgba(212, 175, 55, 0.15)), 
+                url('images/vault-bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    padding: 20px;
+}
+
+p {
+    color: #dce0e9; 
+}
+
+/* --- Homepage Link Fixes & Card Grid --- */
+.card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.recipe-card {
+    background: rgba(45, 50, 56, 0.95); 
+    border: 2px solid #848d9e; 
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px); 
+    border-color: #d4af37; 
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6), 0 0 15px rgba(212, 175, 55, 0.4); 
+    cursor: pointer;
+}
+
+/* --- Individual Recipe Page Container --- */
+.recipe-container {
+    max-width: 800px;
+    margin: 40px auto;
+    background: #2d3238; 
+    border: 3px solid #d4af37; 
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Unified Recipe Images --- */
+.recipe-photo {
+    width: 100%;
+    max-width: 450px; 
+    height: 400px; 
+    object-fit: cover; 
+    display: block;
+    margin: 15px auto;
+    border-radius: 8px;
+    border: 2px solid #848d9e;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* --- Top Dropdown Navigation Bar --- */
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1c212a;
+    border: 1px solid #848d9e;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+select {
+    padding: 8px 12px;
+    font-size: 0.95rem;
+    border-radius: 6px;
+    border: 2px solid #d4af37; 
+    background-color: #2d3238;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+select:hover, select:focus {
+    border-color: #ffffff;
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.8);
+    outline: none;
+}
+
+/* --- Secure Data Tables --- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: #1c212a;
+}
+
+th, td {
+    border: none; 
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background: #22272e;
+    color: #d4af37;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+/* Slightly shades every other data row so it's super easy to read */
+tr:nth-child(even) td {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+td {
+    color: #ffffff;
+}
+
+/* --- Lists --- */
+ul, ol {
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+li {
+    margin-bottom: 10px;
+    color: #eeeeee;
+}
+
+dt {
+    color: #d4af37; 
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+dd {
+    color: #dce0e9;
+    margin-left: 20px;
+    margin-bottom: 8px;
+}
+
+/* --- Navigation Link Buttons --- */
+.action-links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    border-top: 2px solid #1c212a;
+    padding-top: 20px;
+}
+
+.back-link {
+    color: #d4af37; 
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.back-link:hover {
+    color: #fff !important;
+    text-shadow: 0 0 10px #d4af37, 0 0 20px #d4af37; 
+    text-decoration: none;
+}
