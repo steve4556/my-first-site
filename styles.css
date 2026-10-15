@@ -194,3 +194,31 @@ dd {
     text-shadow: 0 0 10px #d4af37, 0 0 20px #d4af37; 
     text-decoration: none;
 }
+@media (max-width: 600px) {
+  .recipe-card table tr {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .recipe-card th, 
+  .recipe-card td {
+    display: inline-block;
+    flex: 1 1 calc(50% - 8px);
+    padding: 8px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    box-sizing: border-box;
+  }
+
+  .recipe-card th {
+    background: #22272e;
+    color: #d4af37;
+  }
+
+  .recipe-card td {
+    background: rgba(255, 255, 255, 0.05);
+  }
+}
