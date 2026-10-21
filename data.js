@@ -1,0 +1,822 @@
+const myRecipes = [
+  {
+    id: "3-egg-omelette",
+    emoji: "🍳",
+    title: "3-Egg Omelette",
+    image: "3 Egg Omelette.jpg",
+    subtitle: "A simple and delicious breakfast option that's perfect for any time of day.",
+    times: { prep: "5 mins", cook: "5 mins", servings: "1 person" },
+    nutrition: { calories: 430, protein: 24, carbs: 2, fats: 35 },
+    highlights: [
+      { category: "Protein", text: "Contains 18 grams of complete protein from three large eggs to keep you full and energized." },
+      { category: "Protein", text: "Contains 6 grams of protein from 1/4 cup of shredded cheddar cheese." },
+      { category: "Essential Vitamins", text: "Rich in Vitamin D and B12, which are crucial for bone health and daily energy levels." },
+      { category: "Healthy Fats & Choline", text: "The yolks supply healthy fats and choline, an important nutrient for brain health and memory." }
+    ],
+    ingredients: [
+      "3 large eggs",
+      "1 tablespoon butter",
+      "2 tablespoons shredded cheddar cheese",
+      "Salt and pepper to taste"
+    ],
+    instructions: [
+      "Crack the eggs into a bowl, add a pinch of salt and pepper, and whisk until blended.",
+      "Melt the butter in a non-stick skillet over medium-low heat.",
+      "Pour in the eggs and let them cook undisturbed for 1 minute, then gently push the cooked edges toward the center.",
+      "When the top is mostly set but still slightly wet, sprinkle the cheese over one half.",
+      "Fold the omelet in half, slide it onto a plate, and serve hot!"
+    ]
+  }, // <--- MAKE SURE THIS COMMA IS HERE!
+  
+  {
+    id: "blueberry-muffins",
+    emoji: "🫐",
+    title: "Blueberry Muffins",
+    image: "muffins.jpg", // Double-check your local folder to ensure this name matches exactly
+    subtitle: "Fluffy, bakery-style muffins bursting with fresh blueberries and finished with a golden crumb topping.",
+    times: {
+      prep: "15 mins",
+      cook: "20 mins", // Maps cleanly onto your Bake Time header!
+      servings: "12 muffins"
+    },
+    nutrition: {
+      calories: 210,
+      protein: 4,
+      carbs: 32,
+      fats: 8
+    },
+    highlights: [
+      { category: "Antioxidant Rich", text: "Packed with fresh blueberries providing high levels of antioxidants and Vitamin C." },
+      { category: "Energy Source", text: "Complex carbohydrates from flour and fruit deliver a steady, sustained energy release." },
+      { category: "Bakery Quality", text: "A specialized golden crumb brown-sugar structural topping adds artisan depth and texture." }
+    ],
+    ingredients: [
+      "2 cups all-purpose flour",
+      "1/2 cup granulated sugar",
+      "2 teaspoons baking powder",
+      "1/2 teaspoon salt",
+      "1 cup fresh blueberries",
+      "1/2 cup whole milk",
+      "1/2 cup melted butter",
+      "2 large eggs",
+      "1/4 cup brown sugar (for topping)"
+    ],
+    instructions: [
+      "Preheat your oven to 375°F (190°C) and line a 12-cup muffin tin with paper liners.",
+      "In a large bowl, whisk together the flour, sugar, baking powder, and salt.",
+      "Toss the fresh blueberries gently into the dry mixture until lightly coated in flour.",
+      "In a separate bowl, whisk the milk, melted butter, and eggs together.",
+      "Pour the wet mixture into the dry ingredients and stir gently until just combined (do not overmix).",
+      "Divide the batter evenly among the muffin cups and sprinkle the tops with brown sugar.",
+      "Bake for 20 minutes or until a toothpick inserted into the center comes out clean. Let cool before serving!"
+    ]
+  },
+  {
+    id: "chicken-vegetable-stir-fry",
+    emoji: "🥢",
+    title: "Chicken and Vegetable Stir Fry",
+    image: "chicken and veggie stir-fry.jpg", // Verified from your index file layout name
+    subtitle: "A healthy and flavorful dish that's quick to prepare and perfect for a weeknight.",
+    times: {
+      prep: "10 mins",
+      cook: "10 mins",
+      servings: "4 people"
+    },
+    nutrition: {
+      calories: 380,
+      protein: 35,
+      carbs: 24,
+      fats: 12
+    },
+    highlights: [
+      { category: "High Protein", text: "Delivers 35 grams of high-quality lean chicken protein per serving to support satiety." },
+      { category: "Vitamin Loaded", text: "Fresh bell peppers and broccoli florets inject a massive dose of Vitamin C and essential dietary fiber." },
+      { category: "Quick Clean Meal", text: "A true one-skillet balanced recipe that cooks in under 10 minutes once your prep work is finished." }
+    ],
+    ingredients: [
+      "1 lb boneless, skinless chicken breasts, cut into bite-sized cubes",
+      "2 cups broccoli florets",
+      "1 large bell pepper (any color), sliced into thin strips",
+      "1 medium carrot, thinly sliced into rounds",
+      "2 cloves garlic, minced",
+      "1 tablespoon freshly grated ginger",
+      "3 tablespoons low-sodium soy sauce",
+      "1 tablespoon sesame oil",
+      "1 tablespoon cornstarch blended with 2 tablespoons water"
+    ],
+    instructions: [
+      "Heat the sesame oil in a large skillet or wok over medium-high heat until hot.",
+      "Add the cubed chicken to the pan and sauté for 5 to 6 minutes, stirring frequently until cooked through and golden.",
+      "Toss the minced garlic and grated ginger into the pan with the chicken and cook for 30 seconds until highly fragrant.",
+      "Add the broccoli, bell pepper strips, and sliced carrots directly into the skillet, tossing with the chicken.",
+      "Stir-fry the vegetables for 3 to 4 minutes until they are vibrant in color and tender-crisp.",
+      "Pour the low-sodium soy sauce and your cornstarch slurry liquid over the mixture, stirring immediately to combine.",
+      "Simmer for 1 minute as the sauce bubbles and thickens into a beautiful, glossy coating. Serve hot over a bed of rice or noodles!"
+    ]
+  },
+  {
+    id: "chocolate-chip-cookies",
+    emoji: "🍪",
+    title: "Chocolate Chip Cookies",
+    image: "cookies.jpg", // Verified from your index file layout name
+    subtitle: "Classic, golden-brown cookies featuring crisp edges and a soft, chocolatey center.",
+    times: {
+      prep: "15 mins",
+      cook: "10 mins",
+      servings: "24 cookies"
+    },
+    nutrition: {
+      calories: 150,
+      protein: 2,
+      carbs: 20,
+      fats: 7
+    },
+    highlights: [
+      { category: "Texture Control", text: "A balanced ratio of brown sugar to white sugar creates the perfect crispy edge and chewy middle." },
+      { category: "Rich Flavor", text: "Premium semi-sweet chocolate morsels melt into pools of rich chocolate throughout the dough." },
+      { category: "Holiday Classic", text: "The perfect quick-bake traditional recipe that fills the kitchen with a comforting aroma." }
+    ],
+    ingredients: [
+      "2 1/4 cups all-purpose flour",
+      "1/2 teaspoon baking soda",
+      "1 cup unsalted butter, softened",
+      "1/2 cup granulated sugar",
+      "1 cup packed brown sugar",
+      "1 teaspoon salt",
+      "2 teaspoons vanilla extract",
+      "2 large eggs",
+      "2 cups semi-sweet chocolate chips"
+    ],
+    instructions: [
+      "Preheat your oven to 375°F (190°C) and line two large baking sheets with parchment paper.",
+      "In a medium bowl, whisk together the flour and baking soda, then set it aside.",
+      "In a large bowl, cream together the softened butter, granulated sugar, brown sugar, salt, and vanilla extract until smooth.",
+      "Beat in the eggs one at a time until completely integrated into the creamed mixture.",
+      "Gradually stir in the dry ingredients until a soft dough forms, then fold in the chocolate chips uniformly.",
+      "Drop rounded tablespoons of dough about 2 inches apart onto your prepared baking sheets.",
+      "Bake for 9 to 11 minutes or until the edges are beautifully golden brown. Let cool on the sheet for 2 minutes before transferring to a wire rack!"
+    ]
+  },
+  {
+    id: "crispy-baked-chicken",
+    emoji: "🍗",
+    title: "Crispy Baked Chicken",
+    image: "crispy-chicken.jpg", 
+    subtitle: "Tender chicken pieces rolled in savory parmesan garlic potato flakes and oven-baked in rich melted butter.",
+    times: {
+      prep: "15 mins",
+      cook: "45 mins",
+      servings: "4 people"
+    },
+    nutrition: {
+      calories: 460,
+      protein: 42,
+      carbs: 18,
+      fats: 24
+    },
+    highlights: [
+      { category: "High Protein", text: "Delivers 42 grams of high-quality protein per serving to keep you full and satisfied." },
+      { category: "Crunchy Coating", text: "A unique blend of crushed potato flakes and grated parmesan cheese creates a satisfying, crunchy crust without deep frying." },
+      { category: "Juicy Interior", text: "Baking the chicken in a layer of melted butter seals in the natural juices for an incredibly tender result." }
+    ],
+    ingredients: [
+      "4 boneless, skinless chicken breasts (or chicken tenders)",
+      "1 cup instant potato flakes",
+      "1/2 cup grated parmesan cheese",
+      "1 teaspoon garlic powder",
+      "1 teaspoon dried parsley",
+      "1/2 cup unsalted butter, melted",
+      "Salt and black pepper to taste"
+    ],
+    instructions: [
+      "Preheat your oven to 400°F (204°C) and lightly grease a large baking dish.",
+      "In a shallow bowl, mix together the instant potato flakes, grated parmesan cheese, garlic powder, dried parsley, salt, and pepper.",
+      "Melt the butter and pour it into a second separate shallow bowl.",
+      "Dip each piece of chicken thoroughly into the melted butter, coating it completely.",
+      "Roll the buttered chicken immediately in the potato flake and parmesan mixture, pressing gently to make the crunchy coating stick.",
+      "Place the coated chicken pieces side-by-side into your prepared baking dish, and drizzle any remaining melted butter over the top.",
+      "Bake uncovered for 40 to 45 minutes, or until the crust is a deep golden brown and the chicken reaches an internal temperature of 165°F (74°C). Serve hot!"
+    ]
+  },
+  {
+    id: "double-chocolate-brownies",
+    emoji: "🟫",
+    title: "Double Chocolate Brownies",
+    image: "brownies.jpg", // Verified from your index file layout name
+    subtitle: "A rich, fudgy, and incredibly decadent treat packed with double the chocolate goodness.",
+    times: {
+      prep: "15 mins",
+      cook: "30 mins",
+      servings: "16 squares"
+    },
+    nutrition: {
+      calories: 200,
+      protein: 2,
+      carbs: 28,
+      fats: 11
+    },
+    highlights: [
+      { category: "Fudgy Texture", text: "A higher fat-to-flour ratio ensures these brownies stay dense, fudgy, and moist instead of cakey." },
+      { category: "Double Chocolate", text: "Combines rich cocoa powder in the batter with solid semi-sweet chocolate chunks folded in for texture." },
+      { category: "Shiny Crust", text: "Whipping the eggs and sugar thoroughly creates that signature, beautiful crinkle-top paper crust." }
+    ],
+    ingredients: [
+      "1/2 cup unsalted butter, melted",
+      "1 cup granulated sugar",
+      "2 large eggs",
+      "1 teaspoon vanilla extract",
+      "1/3 cup unsweetened cocoa powder",
+      "1/2 cup all-purpose flour",
+      "1/4 teaspoon salt",
+      "1/4 teaspoon baking powder",
+      "1/2 cup semi-sweet chocolate chips"
+    ],
+    instructions: [
+      "Preheat your oven to 350°F (175°C) and grease an 8-inch square baking pan or line it with parchment paper.",
+      "In a large bowl, blend the melted butter, sugar, eggs, and vanilla extract together thoroughly.",
+      "Stir in the cocoa powder, flour, salt, and baking powder until just combined (do not overmix or they will lose their fudginess).",
+      "Gently fold in the chocolate chips until they are evenly distributed through the thick batter.",
+      "Spread the batter evenly into your prepared baking pan, smoothing out the top with a spatula.",
+      "Bake for 20 to 22 minutes, or until a toothpick inserted into the center comes out with a few moist crumbs attached. Let cool completely before slicing into squares!"
+    ]
+  },
+  {
+    id: "french-scalloped-potatoes",
+    emoji: "🍽️",
+    title: "French-Scalloped Potatoes",
+    image: "scalloped-potatoes.jpg", 
+    subtitle: "Layers of thinly sliced potatoes and tender onions baked in a rich, thyme-infused garlic cream sauce.",
+    times: {
+      prep: "20 mins",
+      cook: "55 mins",
+      servings: "4 people"
+    },
+    nutrition: {
+      calories: 260,
+      protein: 6,
+      carbs: 20,
+      fats: 18
+    },
+    highlights: [
+      { category: "Comfort Classic", text: "Rich, creamy thyme-infused sauce delivers traditional French comfort flavor in every bite." },
+      { category: "Perfect Texture", text: "Thinly sliced layers bake down to tender, melt-in-your-mouth perfection." },
+      { category: "Garlic & Herb Blend", text: "Fresh minced garlic and earthy thyme elevate the cream sauce base beautifully." }
+    ],
+    ingredients: [
+      "4 large baking potatoes, peeled and thinly sliced",
+      "1 medium onion, thinly sliced",
+      "2 cloves garlic, minced",
+      "3 tablespoons butter",
+      "3 tablespoons all-purpose flour",
+      "2 1/2 cups whole milk (or heavy cream)",
+      "1 teaspoon fresh thyme leaves",
+      "Salt and black pepper to taste"
+    ],
+    instructions: [
+      "Preheat your oven to 400°F (204°C) and butter a 9x13 inch baking dish.",
+      "In a medium saucepan, melt the butter over medium heat. Stir in the flour and cook for 1 minute.",
+      "Gradually whisk in the milk, minced garlic, thyme, salt, and pepper. Bring to a simmer, stirring constantly until thick and smooth.",
+      "Arrange half of the thinly sliced potatoes in an overlapping layer at the bottom of the prepared baking dish.",
+      "Top with the sliced onions, then arrange the remaining potato slices evenly on top.",
+      "Pour the warm garlic cream sauce uniformly over all the potato layers, pressing down gently so they are submerged.",
+      "Cover the dish with foil and bake for 35 minutes. Remove the foil and bake uncovered for an additional 20 minutes until bubbling and beautifully golden brown on top. Let rest 5 minutes before slicing!"
+    ]
+  },
+  {
+    id: "grilled-chicken-salad",
+    emoji: "🥗",
+    title: "Grilled Chicken Salad",
+    image: "Grilled Chicken Salad.jpg", // Verified from your index file layout name
+    subtitle: "A refreshing and satisfying salad packed with flavor and fresh vegetables.",
+    times: {
+      prep: "15 mins",
+      cook: "10 mins",
+      servings: "2 people"
+    },
+    nutrition: {
+      calories: 390,
+      protein: 38,
+      carbs: 10,
+      fats: 22
+    },
+    highlights: [
+      { category: "High Protein", text: "Packed with 38 grams of lean protein from grilled chicken breast to support muscle recovery and fullness." },
+      { category: "Low Carb", text: "An excellent low-carbohydrate meal option loaded with crisp, fiber-rich garden greens." },
+      { category: "Micronutrient Rich", text: "Fresh cucumbers and cherry tomatoes provide essential vitamins, minerals, and clean hydration." }
+    ],
+    ingredients: [
+      "2 skinless, boneless chicken breasts",
+      "4 cups mixed salad greens (romaine, spinach, or arugula)",
+      "1 cup cherry tomatoes, halved",
+      "1 large cucumber, sliced",
+      "1/4 cup red onion, thinly sliced",
+      "2 tablespoons olive oil",
+      "1 tablespoon balsamic vinegar",
+      "Salt, pepper, and garlic powder to taste"
+    ],
+    instructions: [
+      "Season both sides of the chicken breasts evenly with salt, black pepper, and garlic powder.",
+      "Heat a grill pan or outdoor grill over medium-high heat and brush lightly with olive oil.",
+      "Grill the chicken for 5 to 6 minutes per side, or until the internal temperature reaches 165°F (74°C). Remove from heat and let rest.",
+      "While the chicken rests, wash and chop your salad greens, cherry tomatoes, and cucumber.",
+      "Toss the greens, tomatoes, cucumber, and sliced red onion together in a large salad bowl.",
+      "Slice the rested grilled chicken breast into clean, bite-sized strips.",
+      "Top the salad with the warm chicken slices, drizzle uniformly with olive oil and balsamic vinegar, and serve immediately!"
+    ]
+  },
+  {
+    id: "cheese-appetizers",
+    emoji: "🧀",
+    title: "Melted Cheese Hor D'oeuvres",
+    image: "cheese-appetizers.jpg", 
+    subtitle: "A warm, savory party appetizer featuring blended cheddar and Swiss cheese broiled on crisp onion crackers.",
+    times: {
+      prep: "10 mins",
+      cook: "5 mins",
+      servings: "3 platters"
+    },
+    nutrition: {
+      calories: 160,
+      protein: 5,
+      carbs: 10,
+      fats: 11
+    },
+    highlights: [
+      { category: "Party Ready", text: "Yields three full platters, making it the perfect quick-prep crowd-pleaser for any gathering." },
+      { category: "Cheese Blend", text: "Combines sharp cheddar and smooth Swiss cheese for a beautifully balanced, gooey texture." },
+      { category: "Savory Crunch", text: "Broiling the cheese directly on crisp onion crackers adds an incredible, savory crunch to every bite." }
+    ],
+    ingredients: [
+      "1 cup sharp cheddar cheese, shredded",
+      "1 cup Swiss cheese, shredded",
+      "1/2 cup mayonnaise",
+      "1 box crisp onion crackers",
+      "1/2 teaspoon paprika",
+      "2 tablespoons fresh chives, finely chopped"
+    ],
+    instructions: [
+      "Preheat your oven's broiler to high and line a large baking sheet with foil.",
+      "In a medium bowl, mix together the shredded cheddar, shredded Swiss, and mayonnaise until evenly blended.",
+      "Arrange the onion crackers side-by-side in a single layer on your prepared baking sheet.",
+      "Spoon a rounded tablespoon of the cheese mixture onto the center of each cracker.",
+      "Dust the tops of the cheese mounds lightly with a pinch of paprika for color and subtle flavor.",
+      "Place under the broiler for 3 to 5 minutes, watching very closely, until the cheese is melted, bubbly, and lightly golden brown.",
+      "Garnish with freshly chopped chives and serve immediately while warm!"
+    ]
+  },
+  {
+    id: "onion-canape",
+    emoji: "🧅",
+    title: "Onion Canape",
+    image: "onion-canape.jpg", 
+    subtitle: "A classic party bite featuring a rich whipped butter and mayo base spread over thin bread, topped with fresh onion and bubbly parmesan.",
+    times: {
+      prep: "15 mins",
+      cook: "15 mins", // Maps cleanly to your Bake Time header!
+      servings: "Flexible Batches"
+    },
+    nutrition: {
+      calories: 85,
+      protein: 2,
+      carbs: 5,
+      fats: 7
+    },
+    highlights: [
+      { category: "Classic Presentation", text: "Elegant and timeless finger food that makes an impression at any gathering." },
+      { category: "Rich Base", text: "A beautifully whipped blend of premium butter and mayonnaise creates a melting, luxurious texture." },
+      { category: "Bubbly Finish", text: "Topped with sharp parmesan that browns to absolute crispy perfection under the heat." }
+    ],
+    ingredients: [
+      "1 loaf thin sliced white or party bread",
+      "1/2 cup unsalted butter, softened",
+      "1/4 cup mayonnaise",
+      "1 cup sweet white onion, finely minced",
+      "1/2 cup grated parmesan cheese",
+      "1/4 teaspoon garlic powder"
+    ],
+    instructions: [
+      "Preheat your oven to 375°F (190°C) and line a large baking sheet with parchment paper.",
+      "Using a cookie cutter or knife, trim the bread slices into clean, decorative circles or squares.",
+      "In a small bowl, whip together the softened butter, mayonnaise, and a pinch of garlic powder until completely smooth.",
+      "Spread a generous layer of the butter mixture across each piece of bread, coating them completely to the edges.",
+      "Top the mixture with a clean layer of finely minced sweet white onions.",
+      "Dust the tops heavily with grated parmesan cheese, pressing lightly so it sticks to the onions.",
+      "Bake for 12 to 15 minutes until the bread is nicely toasted on the bottom, and the cheese on top is completely melted, bubbly, and golden. Serve warm!"
+    ]
+  },
+  {
+    id: "pizza-loaves",
+    emoji: "🍕",
+    title: "Pizza Loaves",
+    image: "pizza-loaves.jpg", 
+    subtitle: "A fun and crispy twist on pizza night featuring meat-stuffed sourdough baguettes baked to bubbly perfection.",
+    times: {
+      prep: "15 mins",
+      cook: "23 mins",
+      servings: "4 people"
+    },
+    nutrition: {
+      calories: 615,
+      protein: 52,
+      carbs: 34,
+      fats: 35
+    },
+    highlights: [
+      { category: "High Protein Boost", text: "Packed with a massive 52 grams of muscle-building protein per serving from high-quality meats and melted cheese." },
+      { category: "Sourdough Crunch", text: "Using hollowed-out sourdough baguettes creates an incredibly sturdy, crispy crust that holds toppings perfectly." },
+      { category: "Customizable Base", text: "The meat-stuffed foundation can easily handle extra vegetables or a drizzle of hot honey before serving." }
+    ],
+    ingredients: [
+      "2 sourdough baguettes (about 12 inches each)",
+      "1/2 lb sweet Italian sausage, cooked and crumbled",
+      "1/2 cup pepperoni, finely chopped",
+      "1 1/2 cups marinara sauce",
+      "2 cups shredded mozzarella cheese",
+      "1/4 cup grated parmesan cheese",
+      "1 teaspoon Italian seasoning",
+      "2 tablespoons melted butter mixed with 1/2 teaspoon garlic powder"
+    ],
+    instructions: [
+      "Preheat your oven to 400°F (204°C) and line a large baking sheet with foil.",
+      "Slice the top third off each sourdough baguette lengthwise and hollow out the bottoms slightly to form sturdy bread boats.",
+      "Brush the inside and outside edges of the bread boats with the garlic-infused melted butter.",
+      "Place the baguettes on the baking sheet and toast them in the oven for 5 minutes until lightly crisp.",
+      "Remove from the oven and spread a generous layer of marinara sauce across the bottom of each boat.",
+      "Layer in the crumbled Italian sausage and chopped pepperoni, then blanket heavily with shredded mozzarella cheese.",
+      "Dust the tops with parmesan cheese and Italian seasoning, then bake for 15 to 18 minutes until the cheese is bubbling and golden brown. Slice and serve hot!"
+    ]
+  },
+  {
+    id: "protein-breakfast-biscuits",
+    emoji: "🫓",
+    title: "Protein Breakfast Biscuits",
+    image: "biscuits.jpg", 
+    subtitle: "A savory, fluffy breakfast meal-prep option packed with chicken sausage, cheddar cheese, and Greek yogurt.",
+    times: {
+      prep: "15 mins",
+      cook: "25 mins",
+      servings: "12 biscuits"
+    },
+    nutrition: {
+      calories: 232,
+      protein: 13,
+      carbs: 23,
+      fats: 10
+    },
+    highlights: [
+      { category: "Meal Prep Friendly", text: "Yields 12 biscuits that freeze beautifully, making healthy weekday breakfasts completely effortless." },
+      { category: "Smart Protein Swap", text: "Utilizes high-protein Greek yogurt and lean chicken sausage to boost protein content without adding excess fat." },
+      { category: "Fluffy & Savory", text: "The chemical reaction between baking powder and Greek yogurt creates a wonderfully light, airy texture." }
+    ],
+    ingredients: [
+      "2 cups self-rising flour",
+      "1 cup plain, non-fat Greek yogurt",
+      "1/2 cup cooked chicken sausage, crumbled",
+      "1/2 cup sharp cheddar cheese, shredded",
+      "1/4 cup unsalted butter, cold and cubed",
+      "1/4 cup whole milk (as needed for moisture)",
+      "1/2 teaspoon garlic powder"
+    ],
+    instructions: [
+      "Preheat your oven to 400°F (204°C) and grease a large baking sheet or line it with parchment paper.",
+      "In a large bowl, combine the self-rising flour and garlic powder.",
+      "Using a pastry cutter or your fingers, work the cold cubed butter into the flour until the mixture resembles coarse crumbs.",
+      "Stir in the shredded cheddar cheese and crumbled chicken sausage until evenly distributed throughout the dry base.",
+      "Add the plain Greek yogurt and stir gently. If the dough is too dry to form, add the milk one tablespoon at a time until a soft dough forms.",
+      "Turn the dough out onto a lightly floured surface, press it down to about 1-inch thickness, and cut into 12 even rounds using a biscuit cutter.",
+      "Arrange the biscuits side-by-side on your prepared baking sheet and bake for 22 to 25 minutes until the tops are beautifully golden brown. Serve warm!"
+    ]
+  },
+  {
+    id: "pumpkin-raisin-nut-bread",
+    emoji: "🍞",
+    title: "Pumpkin Raisin Nut Bread",
+    image: "pumpkin-bread.jpg", 
+    subtitle: "A deeply spiced autumn classic loaded with pure pumpkin, sweet plump raisins, and crunchy chopped pecans.",
+    times: {
+      prep: "20 mins",
+      cook: "25-60 mins", // Maps perfectly to your dynamic Bake Time header!
+      servings: "Loaves or Muffins"
+    },
+    nutrition: {
+      calories: 220,
+      protein: 3,
+      carbs: 36,
+      fats: 8
+    },
+    highlights: [
+      { category: "Autumn Spice Blend", text: "Infused with cinnnamon, nutmeg, and cloves to deliver an incredible, deeply comforting seasonal aroma." },
+      { category: "Moisture Balance", text: "Pure pumpkin puree ensures a perfectly dense, moist texture that stays fresh for days." },
+      { category: "Textural Contrast", text: "Combines sweet, juicy plump raisins with crunchy chopped pecans for a satisfying bite." }
+    ],
+    ingredients: [
+      "1 3/4 cups all-purpose flour",
+      "1 teaspoon baking soda",
+      "1/2 teaspoon salt",
+      "2 teaspoons pumpkin pie spice",
+      "1/2 cup vegetable oil",
+      "1 cup granulated sugar",
+      "2 large eggs",
+      "1 cup pure pumpkin puree",
+      "1/2 cup sweet raisins",
+      "1/2 cup chopped pecans or walnuts"
+    ],
+    instructions: [
+      "Preheat your oven to 350°F (175°C) and grease an 8x4 inch loaf pan (or prepare a 12-cup muffin tin).",
+      "In a medium bowl, whisk together the flour, baking soda, salt, and pumpkin pie spice, then set aside.",
+      "In a large bowl, beat together the vegetable oil, sugar, eggs, and pure pumpkin puree until completely smooth.",
+      "Gradually add the dry ingredients into the wet mixture, stirring gently with a spatula until just combined.",
+      "Gently fold in the plump raisins and chopped pecans until they are uniformly distributed through the thick batter.",
+      "Pour the batter into your prepared loaf pan, smoothing out the top evenly.",
+      "Bake for 50 to 60 minutes for a loaf (or 25 minutes for muffins) until a toothpick inserted into the center comes out clean. Let cool completely before slicing!"
+    ]
+  },
+  {
+    id: "roasted-dates",
+    emoji: "🥓",
+    title: "Roasted Dates w/ Parm & Bacon",
+    image: "roasted-dates.jpg", 
+    subtitle: "Sweet, jammy pitted dates stuffed with cream cheese and parmesan, wrapped in crisp smoky bacon.",
+    times: {
+      prep: "20 mins",
+      cook: "20 mins",
+      servings: "18+ pieces"
+    },
+    nutrition: {
+      calories: 90,
+      protein: 3,
+      carbs: 10,
+      fats: 5
+    },
+    highlights: [
+      { category: "Flavor Balance", text: "Creates a masterful flavor contrast by pairing naturally sweet, jammy dates with salty, smoky bacon." },
+      { category: "Creamy Filling", text: "A smooth stuffing blend of rich cream cheese and sharp parmesan melts beautifully in the oven center." },
+      { category: "Perfect Crisp", text: "Baking at high heat ensures the outer bacon layer renders down to an incredibly satisfying crunch." }
+    ],
+    ingredients: [
+      "18 large Medjool dates, pitted",
+      "4 oz cream cheese, softened",
+      "1/4 cup grated parmesan cheese",
+      "9 slices of bacon, cut in half crosswise",
+      "18 toothpicks, soaked in water for 10 minutes",
+      "1 tablespoon hot honey (optional drizzle)"
+    ],
+    instructions: [
+      "Preheat your oven to 400°F (204°C) and line a rimmed baking sheet with aluminum foil or parchment paper.",
+      "In a small bowl, thoroughly mix the softened cream cheese and grated parmesan cheese together until smooth.",
+      "Gently slice open one side of each pitted date to form a pocket, and stuff it with a rounded teaspoon of the cheese mixture.",
+      "Press the stuffed date edges back together tightly to seal the rich cheese filling inside safely.",
+      "Wrap one half-slice of bacon snugly around the middle of each date, securing it completely with a soaked toothpick.",
+      "Arrange the wrapped dates in a single layer on your prepared baking sheet, spacing them evenly.",
+      "Bake for 15 to 20 minutes, flipping them over halfway through, until the bacon wrapping is completely cooked and beautifully crisp. Serve warm!"
+    ]
+  },
+   {
+    id: "rosemary-steak-fries",
+    emoji: "🥔",
+    title: "Rosemary Steak Fries",
+    image: "steak-fries.jpg", 
+    subtitle: "Thick-cut baking potatoes seasoned with aromatic rosemary, garlic, herbs, and a kick of crushed red pepper flakes.",
+    times: {
+      prep: "15 mins",
+      cook: "40 mins",
+      servings: "6 people"
+    },
+    nutrition: {
+      calories: 190,
+      protein: 3,
+      carbs: 25,
+      fats: 10
+    },
+    highlights: [
+      { category: "Thick Cut", text: "Heavy steak-house wedge slicing provides a crispy outer skin while retaining a soft, fluffy potato core." },
+      { category: "Aromatic Herbs", text: "Fresh chopped rosemary and minced garlic coat the wedges to release an incredible savory fragrance during roasting." },
+      { category: "Spicy Kick", text: "A subtle pinch of crushed red pepper flakes cuts through the rich olive oil coating for an exciting depth of heat." }
+    ],
+    ingredients: [
+      "4 large russet baking potatoes, washed and cut into wedges",
+      "3 tablespoons olive oil",
+      "2 tablespoons fresh rosemary, finely chopped",
+      "3 cloves garlic, minced",
+      "1/2 teaspoon crushed red pepper flakes",
+      "1 teaspoon sea salt",
+      "1/2 teaspoon freshly cracked black pepper"
+    ],
+    instructions: [
+      "Preheat your oven to 420°F (215°C) and lightly grease two large rimmed baking sheets.",
+      "Thoroughly pat the sliced potato wedges completely dry with paper towels to ensure maximum crispiness.",
+      "In a large bowl, toss the potato wedges with the olive oil until every single wedge is evenly glossy.",
+      "Add the chopped fresh rosemary, minced garlic, pepper flakes, sea salt, and black pepper, tossing again to coat evenly.",
+      "Arrange the wedges in a single layer across your prepared baking sheets, ensuring they don't overlap or crowd each other.",
+      "Roast for 35 to 40 minutes, flipping the wedges halfway through, until they are beautifully browned and crisp on the edges. Serve hot!"
+    ]
+  },
+  {
+    id: "casserole",
+    emoji: "🥘",
+    title: "Southern Chicken Casserole",
+    image: "casserole.jpg", 
+    subtitle: "A comforting, hearty southern classic featuring crisp bacon, tender chicken, and pan-browned potatoes.",
+    times: {
+      prep: "20 mins",
+      cook: "40 mins",
+      servings: "4 people"
+    },
+    nutrition: {
+      calories: 790,
+      protein: 62,
+      carbs: 45,
+      fats: 40
+    },
+    highlights: [
+      { category: "High Protein Heavyweight", text: "Delivers a massive 62 grams of high-quality protein per serving from fresh chicken breast and real bacon." },
+      { category: "Southern Comfort", text: "Pan-browning the potatoes before baking creates a beautifully rich foundation of flavor." },
+      { category: "Crowd Pleaser", text: "A hearty and dense all-in-one skillet meal prep option that reheats beautifully for leftovers." }
+    ],
+    ingredients: [
+      "1.5 lbs chicken breast, cubed",
+      "4 large baking potatoes, cubed",
+      "6 slices of bacon, diced",
+      "1 cup sharp cheddar cheese, shredded",
+      "1/2 cup heavy cream",
+      "1 teaspoon onion powder",
+      "1 teaspoon smoked paprika",
+      "Salt and black pepper to taste"
+    ],
+    instructions: [
+      "Preheat your oven to 375°F (190°C) and grease a large 9x13 inch baking casserole dish.",
+      "In a large skillet over medium-high heat, fry the diced bacon until beautifully crisp, then remove the bacon bits and leave the grease in the pan.",
+      "Toss your cubed potatoes directly into the hot bacon grease and cook for 8 to 10 minutes until lightly browned, then transfer them to the baking dish.",
+      "Season the cubed chicken breasts with smoked paprika, onion powder, salt, and pepper, and sear them in the same skillet for 5 minutes until golden.",
+      "Layer the seared chicken evenly over the pan-browned potatoes inside your baking dish.",
+      "Pour the heavy cream uniformly across the chicken and potatoes, then top with the shredded cheddar cheese and crisp bacon bits.",
+      "Bake uncovered for 20 to 25 minutes until the cheese is completely melted, bubbling, and golden brown. Serve hot!"
+    ]
+  },
+  {
+    id: "sorbet",
+    emoji: "🍧",
+    title: "Strawberry Mango Sorbet",
+    image: "sorbet.jpg", // Verified extension framework name match
+    subtitle: "A vibrant, icy-smooth refreshment exploding with naturally sweet frozen fruits and a splash of zesty citrus.",
+    times: {
+      prep: "10 mins",
+      cook: "8 hours", // Maps cleanly onto your dynamic Freeze Time header metrics!
+      servings: "4 people"
+    },
+    nutrition: {
+      calories: 60,
+      protein: 1,
+      carbs: 15,
+      fats: 0
+    },
+    highlights: [
+      { category: "Naturally Sweet", text: "Zero added sugars or corn syrups—rely entirely on the natural fructose sweetness of ripe mangoes and sweet strawberries." },
+      { category: "Fat Free Refreshment", text: "A clean, dairy-free, and 100% fat-free dessert option that is incredibly light on the stomach." },
+      { category: "Vitamin C Boost", text: "A massive antioxidant burst driven by a fresh splash of zesty citrus lemon juice." }
+    ],
+    ingredients: [
+      "2 cups frozen sweet strawberries",
+      "2 cups frozen ripe mango chunks",
+      "1 tablespoon fresh lemon juice",
+      "1/4 cup warm water (added gradually to aid blending moisture)"
+    ],
+    instructions: [
+      "Pull your frozen strawberries and mango chunks out of the freezer and let them sit at room temperature for 5 minutes to soften slightly.",
+      "Transfer the fruit directly into a high-powered food processor or blender.",
+      "Drizzle the fresh lemon juice and 2 tablespoons of warm water over the fruit pieces.",
+      "Pulse and blend on high speed, scraping down the sides as necessary, until the mixture is completely uniform, glossy, and smooth.",
+      "Pour the smooth sorbet mixture into a chilled loaf pan or freezer-safe container.",
+      "Freeze for a solid 6 to 8 hours until completely firm, then scoop with a warm metal spoon and serve cold!"
+    ]
+  },
+  {
+    id: "sweet-sour-meatballs",
+    emoji: "🧆",
+    title: "Sweet & Sour Meatballs",
+    image: "sweet-sour-meatballs.jpg", 
+    subtitle: "Savory chopmeat meatballs spiked with horseradish and Tabasco, baked tender and coated in a bold, rich homemade glaze.",
+    times: {
+      prep: "20 mins",
+      cook: "20 mins", // Maps cleanly to your Bake Time header!
+      servings: "4-6 people"
+    },
+    nutrition: {
+      calories: 410,
+      protein: 26,
+      carbs: 32,
+      fats: 18
+    },
+    highlights: [
+      { category: "Bold Glaze Flavor", text: "Coated in a bold, rich homemade glaze that perfectly balances sweet and sour elements." },
+      { category: "Zesty Protein Kick", text: "Delivers 26 grams of protein per serving, spiked with horseradish and Tabasco for an exciting kick of flavor." },
+      { category: "Oven Baked Tender", text: "Baking the savory chopmeat meatballs ensures they stay incredibly juicy and tender on the inside." }
+    ],
+    ingredients: [
+      "1.5 lbs ground beef (chopmeat)",
+      "1/2 cup breadcrumbs",
+      "1 large egg",
+      "1 tablespoon prepared horseradish",
+      "1/2 teaspoon Tabasco sauce",
+      "1/2 cup ketchup",
+      "1/4 cup brown sugar",
+      "2 tablespoons apple cider vinegar",
+      "Salt and black pepper to taste"
+    ],
+    instructions: [
+      "Preheat your oven to 400°F (204°C) and lightly grease a large rimmed baking sheet.",
+      "In a large bowl, combine the ground beef, breadcrumbs, egg, horseradish, Tabasco, salt, and pepper.",
+      "Roll the mixture into even, bite-sized meatballs and arrange them across your prepared baking sheet.",
+      "Bake the meatballs for 15 to 20 minutes until they are completely cooked through and lightly browned.",
+      "While baking, whisk together the ketchup, brown sugar, and apple cider vinegar in a saucepan over medium heat until bubbly and smooth.",
+      "Toss the hot baked meatballs directly into the saucepan, coating them uniformly in the rich sweet and sour glaze. Serve hot!"
+    ]
+  },
+  {
+    id: "onion-spread",
+    emoji: "🧅",
+    title: "Vidalia Onion Spread",
+    image: "onion-spread.jpg", 
+    subtitle: "A sweet, deeply caramelized roasted Vidalia onion and garlic spread blended with fresh chives.",
+    times: {
+      prep: "15 mins",
+      cook: "40 mins",
+      servings: "8 servings"
+    },
+    nutrition: {
+      calories: 95,
+      protein: 1,
+      carbs: 12,
+      fats: 5
+    },
+    highlights: [
+      { category: "Natural Sweetness", text: "Relies on the natural sugars released during the slow roasting of genuine Vidalia onions." },
+      { category: "Smooth Creamy Base", text: "Blends seamlessly into a velvety texture that pairs perfectly with toasted baguettes or crackers." },
+      { category: "Aromatic Herbs", text: "Finished with a generous fold of fresh, sharp chives to balance the deep sweetness." }
+    ],
+    ingredients: [
+      "2 large Vidalia onions, diced",
+      "1 whole head of garlic",
+      "2 tablespoons olive oil",
+      "4 oz cream cheese, softened",
+      "1/4 cup sour cream",
+      "3 tablespoons fresh chives, finely chopped",
+      "Salt and cracked black pepper to taste"
+    ],
+    instructions: [
+      "Preheat your oven to 400°F (204°C). Slice the top off the garlic head, drizzle with 1 teaspoon of olive oil, and wrap it tightly in foil.",
+      "Toss the diced Vidalia onions in the remaining olive oil, salt, and pepper, and spread them evenly on a baking sheet.",
+      "Place both the wrapped garlic and the onion sheet into the oven, roasting for 35 to 40 minutes until the onions are deeply caramelized and the garlic is soft.",
+      "Squeeze the roasted garlic cloves out of their skins into a food processor, adding the caramelized onions, cream cheese, and sour cream.",
+      "Pulse until the spread reaches your desired consistency (completely smooth or slightly chunky).",
+      "Transfer to a bowl, fold in the freshly chopped chives, and chill for at least 1 hour before serving cold with your favorite crackers!"
+    ]
+  },
+  {
+    id: "fudge-cake",
+    emoji: "🎂",
+    title: "Wellesley Fudge Cake",
+    image: "fudge-cake.jpg", // Verified extension layout name match
+    subtitle: "A rich, traditional chocolate fudge layer cake topped with a velvety, smooth, homemade chocolate frosting.",
+    times: {
+      prep: "25 mins",
+      cook: "35 mins",
+      servings: "2 layers"
+    },
+    nutrition: {
+      calories: 380,
+      protein: 4,
+      carbs: 54,
+      fats: 16
+    },
+    highlights: [
+      { category: "Traditional Recipe", text: "A time-tested, rich chocolate fudge layer cake celebrating authentic New England baking heritage." },
+      { category: "Velvety Frosting", text: "Topped with a silky, cooked chocolate fudge frosting that sets to an incredibly smooth finish." },
+      { category: "Dense Crumb Structure", text: "A specialized chocolate-custard base creates an exceptionally moist and decadent crumb." }
+    ],
+    ingredients: [
+      "4 oz unsweetened chocolate, chopped",
+      "1/2 cup water",
+      "1 3/4 cups granulated sugar",
+      "1/2 cup unsalted butter, softened",
+      "3 large eggs",
+      "2 cups all-purpose flour",
+      "1 teaspoon baking soda",
+      "1/2 teaspoon salt",
+      "3/4 cup milk",
+      "1 teaspoon vanilla extract"
+    ],
+    instructions: [
+      "Preheat your oven to 350°F (175°C). Grease and flour two 9-inch round cake pans.",
+      "In a small saucepan over low heat, cook the chopped chocolate and water together, stirring constantly until melted and smooth. Stir in 1/4 cup of the sugar, then let cool.",
+      "In a large bowl, cream the softened butter and remaining 1 1/2 cups of sugar together until light and fluffy.",
+      "Beat in the eggs one at a time, then stir in the cooled, melted chocolate mixture and vanilla extract thoroughly.",
+      "Whisk together the flour, baking soda, and salt. Add to the creamed mixture alternately with the milk, beating well after each addition.",
+      "Divide the thick chocolate batter evenly between your two prepared cake pans, smoothing the tops.",
+      "Bake for 30 to 35 minutes until a toothpick inserted into the center comes out clean. Let cool completely in the pans before frosting!"
+    ]
+  }
+];
+
+
+
