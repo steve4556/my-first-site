@@ -5,410 +5,135 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Ultimate Recipe Vault</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Immersive UI Overlay Animations & Layout */
+        #fullscreen-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #1c212a;
+            z-index: 1000;
+            overflow-y: auto;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.4s;
+        }
+
+        #fullscreen-overlay.is-active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .close-btn-container {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .close-vault-btn {
+            background: none;
+            border: none;
+            color: #d4af37;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            padding: 0;
+        }
+
+        .close-vault-btn:hover {
+            color: #ffffff;
+            text-shadow: 0 0 10px #d4af37;
+        }
+        
+        /* Utility to freeze background body scroll when full-screen view is active */
+        body.modal-open {
+            overflow: hidden;
+        }
+    </style>
 </head>
 <body class="home-page" id="top">
+
     <section>
         <h1>The Ultimate Recipe Vault</h1>
         <h2>Featured Recipes</h2> 
         <p>Welcome to The Ultimate Recipe Vault! Here you'll find the most delicious recipes available online! Browse our fine selection of recipes and start cooking now!</p>   
 
-        <label for="recipe-select">Choose a recipe from the vault:</label>
-        <select id="recipe-select" onchange="if(this.value) window.location.href=this.value;">
+        <!-- Pointers aligned directly to script selectors -->
+        <label for="recipe-selector">Choose a recipe from the vault:</label>
+        <select id="recipe-selector">
             <option value="">-- Select a Dish --</option>
-            <option value="omelette.html">🍳 3-Egg Omelette</option>
-            <option value="muffins.html">🫐 Blueberry Muffins</option>
-            <option value="cookies.html">🍪 Chocolate Chip Cookies</option>
-            <option value="brownies.html">🟫 Double Chocolate Brownies</option>
-            <option value="salad.html">🥗 Grilled Chicken Salad</option>
-            <option value="stir-fry.html">🥢 Chicken and Vegetable Stir Fry</option>
-            <option value="crispy-chicken.html">🍗 Crispy Baked Chicken</option>
-            <option value="scalloped-potatoes.html">🍽️ French-Scalloped Potatoes</option>
-            <option value="cheese-appetizers.html">🧀 Melted Cheese Hor D'oeuvres</option>
-            <option value="onion-canape.html">🧅 Onion Canape</option>
-            <option value="pizza-loaves.html">🍕 Pizza Loaves</option>
-            <option value="biscuits.html">🫓 Protein Breakfast Biscuits</option>
-            <option value="pumpkin-bread.html">🍞 Pumpkin Raisin Nut Bread</option>
-            <option value="steak-fries.html">🥔 Rosemary Steak Fries</option>
-            <option value="roasted-dates.html">🥓 Roasted Dates w/ Parm & Bacon</option>
-            <option value="casserole.html">🥘 Southern Chicken Casserole</option>
-            <option value="sorbet.html">🍧 Strawberry Mango Sorbet</option>
-            <option value="sweet-sour-meatballs.html">🧆 Sweet & Sour Meatballs</option>
-            <option value="onion-spread.html">🧅 Vidalia Onion Spread</option>
-            <option value="fudge-cake.html">🎂 Wellesley Fudge Cake</option>
-            
+            <!-- JavaScript data loops will print options here dynamically -->
         </select>
     </section>
 
-    <div class="recipe-grid">
-        <!-- 1. Omelet Card Link -->
-        <a href="omelette.html" class="card-link">
-            <section class="recipe-card">
-                <h2>🍳 3-Egg Omelet</h2>
-                <p>A simple and delicious breakfast option that's perfect for any time of day.</p>
-                <div><img src="images/3 Egg Omelette.jpg" alt="3-Egg Omelet" class="recipe-photo"></div>
-                <table>
-                    <tr><th>Prep Time</th><th>Cook Time</th><th>Servings</th></tr>
-                    <tr><td>5 mins</td><td>5 mins</td><td>1 person</td></tr>
-                </table>
-                <table>
-                    <tr><th>Calories</th><th>Protein</th><th>Carbs</th><th>Fats</th></tr>
-                    <tr><td>430 kcal</td><td>24g</td><td>2g</td><td>35g</td></tr>
-                </table>
-            </section>
-        </a>
-        <!--20. Blueberry Muffins link -->
-        <a href="muffins.html" class="card-link">
-  <section class="recipe-card">
-    <h2>🫐 Blueberry Muffins</h2>
-    <p>Fluffy, bakery-style muffins bursting with fresh blueberries and finished with a golden crumb topping.</p>
-    <div><img src="images/muffins.jpg" alt="Homemade Blueberry Muffins" class="recipe-photo"></div>
-    
-    <table>
-      <thead>
-        <tr>
-          <th>Prep Time</th>
-          <th>Bake Time</th>
-          <th>Yield</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>15 mins</td>
-          <td>20 mins</td>
-          <td>12 muffins</td>
-        </tr>
-      </tbody>
-    </table>
+    <!-- The Fort Knox Card Container (JavaScript handles printing the cards into here) -->
+    <div id="recipe-grid-container" class="recipe-grid"></div>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Calories</th>
-          <th>Protein</th>
-          <th>Carbs</th>
-          <th>Fats</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>210 kcal</td>
-          <td>4g</td>
-          <td>32g</td>
-          <td>8g</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-</a>
+    <!-- Immersive Immersive Full-Screen View Overlay Component -->
+    <div id="fullscreen-overlay">
+        <div class="recipe-container">
+            <div class="close-btn-container">
+                <button id="close-overlay" class="close-vault-btn">← Back to Main Menu</button>
+            </div>
+            
+            <h1 id="overlay-title"></h1>
+            <p id="overlay-subtitle" style="text-align: center; font-style: italic; margin-bottom: 30px;"></p>
+            
+            <!-- Secure Data Table for Cooking Times -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Prep Time</th>
+                        <th>Cook/Bake Time</th>
+                        <th>Servings</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="table-prep"></td>
+                        <td id="table-cook"></td>
+                        <td id="table-servings"></td>
+                    </tr>
+                </tbody>
+            </table>
 
-        <!-- 2. Cookie Card Link -->
-        <a href="cookies.html" class="card-link">
-            <section class="recipe-card">
-                <h2>🍪 Chocolate Chip Cookies</h2>
-                <p>Classic, golden-brown cookies featuring crisp edges and a soft, chocolatey center.</p>
-                <div><img src="images/cookies.jpg" alt="Chocolate Chip Cookies" class="recipe-photo"></div>
-                <table>
-                    <tr><th>Prep Time</th><th>Cook Time</th><th>Servings</th></tr>
-                    <tr><td>15 mins</td><td>10 mins</td><td>24 cookies</td></tr>
-                </table>
-                <table>
-                    <tr><th>Calories</th><th>Protein</th><th>Carbs</th><th>Fats</th></tr>
-                    <tr><td>150 kcal</td><td>2g</td><td>20g</td><td>7g</td></tr>
-                </table>
-            </section>
-        </a>
+            <h2>Calorie & Nutrient Breakdown</h2>
+            <!-- Secure Data Table for Nutrition Facts -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Calories</th>
+                        <th>Protein</th>
+                        <th>Carbs</th>
+                        <th>Fats</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="table-calories"></td>
+                        <td id="table-protein"></td>
+                        <td id="table-carbs"></td>
+                        <td id="table-fats"></td>
+                    </tr>
+                </tbody>
+            </table>
 
-        <!-- 3. Brownie Card Link -->
-        <a href="brownies.html" class="card-link">
-            <section class="recipe-card">
-                <h2>🟫 Double Chocolate Brownies</h2>
-                <p>A rich, fudgy, and incredibly decadent treat packed with double the chocolate goodness.</p>
-                <div><img src="images/brownies.jpg" alt="Double Chocolate Brownies" class="recipe-photo"></div>
-                <table>
-                    <tr><th>Prep Time</th><th>Cook Time</th><th>Servings</th></tr>
-                    <tr><td>15 mins</td><td>30 mins</td><td>16 squares</td></tr>
-                </table>
-                <table>
-                    <tr><th>Calories</th><th>Protein</th><th>Carbs</th><th>Fats</th></tr>
-                    <tr><td>200 kcal</td><td>2g</td><td>28g</td><td>11g</td></tr>
-                </table>
-            </section>
-        </a>
+            <h2>Nutritional Highlights</h2>
+            <dl id="overlay-highlights"></dl>
 
-        <!-- 4. Salad Card Link -->
-        <a href="salad.html" class="card-link">
-            <section class="recipe-card">
-                <h2>🥗 Grilled Chicken Salad</h2>
-                <p>A refreshing and satisfying salad packed with flavor and fresh vegetables.</p>
-                <div><img src="images/Grilled Chicken Salad.jpg" alt="Grilled Chicken Salad" class="recipe-photo"></div>
-                <table>
-                    <tr><th>Prep Time</th><th>Cook Time</th><th>Servings</th></tr>
-                    <tr><td>15 mins</td><td>10 mins</td><td>2 people</td></tr>
-                </table>
-                <table>
-                    <tr><th>Calories</th><th>Protein</th><th>Carbs</th><th>Fats</th></tr>
-                    <tr><td>390 kcal</td><td>38g</td><td>10g</td><td>22g</td></tr>
-                </table>
-            </section>
-        </a>
+            <h2>Ingredients</h2>
+            <ul id="overlay-ingredients"></ul>
 
-        <!-- 5. Stir Fry Card Link -->
-        <a href="stir-fry.html" class="card-link">
-            <section class="recipe-card">
-                <h2>🥢 Chicken and Vegetable Stir Fry</h2>
-                <p>A healthy and flavorful dish that's quick to prepare and perfect for a weeknight.</p>
-                <div><img src="images/chicken and veggie stir-fry.jpg" alt="Chicken and Vegetable Stir Fry" class="recipe-photo"></div>
-                <table>
-                    <tr><th>Prep Time</th><th>Cook Time</th><th>Servings</th></tr>
-                    <tr><td>10 mins</td><td>10 mins</td><td>4 people</td></tr>
-                </table>
-                <table>
-                    <tr><th>Calories</th><th>Protein</th><th>Carbs</th><th>Fats</th></tr>
-                    <tr><td>380 kcal</td><td>35g</td><td>24g</td><td>12g</td></tr>
-                </table>
-            </section>
-        </a>
-
-        <!-- 6. Crispy Chicken Card Link -->
-        <a href="crispy-chicken.html" class="card-link">
-            <section class="recipe-card">
-                <h2>🍗 Crispy Baked Chicken</h2>
-                <p>Tender chicken pieces rolled in savory parmesan garlic potato flakes and oven-baked in rich melted butter.</p>
-                <div><img src="images/crispy-chicken.jpg" alt="Crispy Baked Chicken" class="recipe-photo"></div>
-                <table>
-                    <tr><th>Prep Time</th><th>Cook Time</th><th>Servings</th></tr>
-                    <tr><td>15 mins</td><td>45 mins</td><td>4 people</td></tr>
-                </table>
-                <table>
-                    <tr><th>Calories</th><th>Protein</th><th>Carbs</th><th>Fats</th></tr>
-                    <tr><td>460 kcal</td><td>42g</td><td>18g</td><td>24g</td></tr>
-                </table>
-            </section>
-        </a>
-
-        <!-- 7. Scalloped Potatoes Card Link -->
-        <a href="scalloped-potatoes.html" class="card-link">
-            <section class="recipe-card">
-                <h2>🍽️ French-Scalloped Potatoes</h2>
-                <p>Layers of thinly sliced potatoes and tender onions baked in a rich, thyme-infused garlic cream sauce.</p>
-                <div><img src="images/scalloped-potatoes.jpg" alt="French-Scalloped Potatoes" class="recipe-photo"></div>
-                <table>
-                    <tr><th>Prep Time</th><th>Cook Time</th><th>Servings</th></tr>
-                    <tr><td>20 mins</td><td>55 mins</td><td>4 people</td></tr>
-                </table>
-                <table>
-                    <tr><th>Calories</th><th>Protein</th><th>Carbs</th><th>Fats</th></tr>
-                    <tr><td>260 kcal</td><td>6g</td><td>20g</td><td>18g</td></tr>
-                </table>
-            </section>
-        </a>
-
-        <!-- 8. Melted Cheese Card Link -->
-        <a href="cheese-appetizers.html" class="card-link">
-            <section class="recipe-card">
-                <h2>🧀 Melted Cheese Hor D'oeuvres</h2>
-                <p>A warm, savory party appetizer featuring blended cheddar and Swiss cheese broiled on crisp onion crackers.</p>
-                <div><img src="images/cheese-appetizers.jpg" alt="Melted Cheese Hor D'oeuvres" class="recipe-photo"></div>
-                <table>
-                    <tr><th>Prep Time</th><th>Cook Time</th><th>Yield</th></tr>
-                    <tr><td>10 mins</td><td>5 mins</td><td>3 platters</td></tr>
-                </table>
-                <table>
-                    <tr><th>Calories</th><th>Protein</th><th>Carbs</th><th>Fats</th></tr>
-                    <tr><td>160 kcal</td><td>5g</td><td>10g</td><td>11g</td></tr>
-                </table>
-            </section>
-        </a>
-
-        <a href="onion-canape.html" class="card-link">
-            <section class="recipe-card">
-                <h2>🧅 Onion Canape</h2>
-                <p>A classic party bite featuring a rich whipped butter and mayo base spread over thin bread, topped with fresh onion and bubbly parmesan.</p>
-                <div><img src="images/onion-canape.jpg" alt="Onion Canape" class="recipe-photo"></div>
-                <table>
-                    <tr><th>Prep Time</th><th>Bake Time</th><th>Yield</th></tr>
-                    <tr><td>15 mins</td><td>15 mins</td><td>Flexible Batches</td></tr>
-                </table>
-                <table>
-                    <tr><th>Calories</th><th>Protein</th><th>Carbs</th><th>Fats</th></tr>
-                    <tr><td>85 kcal</td><td>2g</td><td>5g</td><td>7g</td></tr>
-                </table>
-            </section>
-        </a>        
-        <a href="pizza-loaves.html" class="card-link">
-            <section class="recipe-card">
-                <h2>🍕 Pizza Loaves</h2>
-                <p>A fun and crispy twist on pizza night featuring meat-stuffed sourdough baguettes baked to bubbly perfection.</p>
-                <div><img src="images/pizza-loaves.jpg" alt="Pizza Loaves" class="recipe-photo"></div>
-                <table>
-                    <tr><th>Prep Time</th><th>Cook Time</th><th>Servings</th></tr>
-                    <tr><td>15 mins</td><td>23 mins</td><td>4 people</td></tr>
-                </table>
-                <table>
-                    <tr><th>Calories</th><th>Protein</th><th>Carbs</th><th>Fats</th></tr>
-                    <tr><td>615 kcal</td><td>52g</td><td>34g</td><td>35g</td></tr>
-                </table>
-            </section>
-        </a>
-
-        <!-- 11. Protein Breakfast Biscuits Card Link -->
-        <a href="biscuits.html" class="card-link">
-            <section class="recipe-card">
-                <h2>🫓 Protein Breakfast Biscuits</h2>
-                <p>A savory, fluffy breakfast meal-prep option packed with chicken sausage, cheddar cheese, and Greek yogurt.</p>
-                <div><img src="images/biscuits.jpg" alt="Protein Breakfast Biscuits" class="recipe-photo"></div>
-                <table>
-                    <tr><th>Prep Time</th><th>Cook Time</th><th>Servings</th></tr>
-                    <tr><td>15 mins</td><td>25 mins</td><td>12 biscuits</td></tr>
-                </table>
-                <table>
-                    <tr><th>Calories</th><th>Protein</th><th>Carbs</th><th>Fats</th></tr>
-                    <tr><td>232 kcal</td><td>13g</td><td>23g</td><td>10g</td></tr>
-                </table>
-            </section>
-        </a>
-
-        <!-- 12. Pumpkin Raisin Nut Bread Card Link -->
-        <a href="pumpkin-bread.html" class="card-link">
-            <section class="recipe-card">
-                <h2>🍞 Pumpkin Raisin Nut Bread</h2>
-                <p>A deeply spiced autumn classic loaded with pure pumpkin, sweet plump raisins, and crunchy chopped pecans.</p>
-                <div><img src="images/pumpkin-bread.jpg" alt="Pumpkin Raisin Nut Bread" class="recipe-photo"></div>
-                <table>
-                    <tr><th>Prep Time</th><th>Bake Time</th><th>Yield Options</th></tr>
-                    <tr><td>20 mins</td><td>25-60 mins</td><td>Loaves or Muffins</td></tr>
-                </table>
-                <table>
-                    <tr><th>Calories</th><th>Protein</th><th>Carbs</th><th>Fats</th></tr>
-                    <tr><td>220 kcal</td><td>3g</td><td>36g</td><td>8g</td></tr>
-                </table>
-            </section>
-        </a>
-
-        <!-- 13. Rosemary Steak Fries Card Link -->
-        <a href="steak-fries.html" class="card-link">
-            <section class="recipe-card">
-                <h2>🥔 Rosemary Steak Fries</h2>
-                <p>Thick-cut baking potatoes seasoned with aromatic rosemary, garlic, herbs, and a kick of crushed red pepper flakes.</p>
-                <div><img src="images/steak-fries.jpg" alt="Rosemary Steak Fries" class="recipe-photo"></div>
-                <table>
-                    <tr><th>Prep Time</th><th>Cook Time</th><th>Servings</th></tr>
-                    <tr><td>15 mins</td><td>40 mins</td><td>6 people</td></tr>
-                </table>
-                <table>
-                    <tr><th>Calories</th><th>Protein</th><th>Carbs</th><th>Fats</th></tr>
-                    <tr><td>190 kcal</td><td>3g</td><td>25g</td><td>10g</td></tr>
-                </table>
-            </section>
-        </a>
-
-        <!-- 14. Roasted Dates Card Link -->
-        <a href="roasted-dates.html" class="card-link">
-            <section class="recipe-card">
-                <h2>🥓 Roasted Dates w/ Parm & Bacon</h2>
-                <p>Sweet, jammy pitted dates stuffed with cream cheese and parmesan, wrapped in crisp smoky bacon.</p>
-                <div><img src="images/roasted-dates.jpg" alt="Roasted Dates with Parmesan & Bacon" class="recipe-photo"></div>
-                <table>
-                    <tr><th>Prep Time</th><th>Cook Time</th><th>Yield</th></tr>
-                    <tr><td>20 mins</td><td>20 mins</td><td>18+ pieces</td></tr>
-                </table>
-                <table>
-                    <tr><th>Calories</th><th>Protein</th><th>Carbs</th><th>Fats</th></tr>
-                    <tr><td>90 kcal</td><td>3g</td><td>10g</td><td>5g</td></tr>
-                </table>
-            </section>
-        </a>
-
-        <!-- 15. Southern Chicken Casserole Card Link -->
-        <a href="casserole.html" class="card-link">
-            <section class="recipe-card">
-                <h2>🥘 Southern Chicken Casserole</h2>
-                <p>A comforting, hearty southern classic featuring crisp bacon, tender chicken, and pan-browned potatoes.</p>
-                <div><img src="images/casserole.jpg" alt="Southern Chicken Casserole" class="recipe-photo"></div>
-                <table>
-                    <tr><th>Prep Time</th><th>Cook Time</th><th>Servings</th></tr>
-                    <tr><td>20 mins</td><td>40 mins</td><td>4 people</td></tr>
-                </table>
-                <table>
-                    <tr><th>Calories</th><th>Protein</th><th>Carbs</th><th>Fats</th></tr>
-                    <tr><td>790 kcal</td><td>62g</td><td>45g</td><td>40g</td></tr>
-                </table>
-            </section>
-        </a>
-
-        <!-- 16. Strawberry Mango Sorbet Card Link -->
-        <a href="sorbet.html" class="card-link">
-            <section class="recipe-card">
-                <h2>🍧 Strawberry Mango Sorbet</h2>
-                <p>A vibrant, icy-smooth refreshment exploding with naturally sweet frozen fruits and a splash of zesty citrus.</p>
-                <div><img src="images/sorbet.jpg" alt="Strawberry Mango Sorbet" class="recipe-photo"></div>
-                <table>
-                    <tr><th>Prep Time</th><th>Freeze Time</th><th>Servings</th></tr>
-                    <tr><td>10 mins</td><td>8 hours</td><td>4 people</td></tr>
-                </table>
-                <table>
-                    <tr><th>Calories</th><th>Protein</th><th>Carbs</th><th>Fats</th></tr>
-                    <tr><td>60 kcal</td><td>1g</td><td>15g</td><td>0g</td></tr>
-                </table>
-            </section>
-        </a>
-
-        <!-- 17. Sweet & Sour Meatballs Card Link -->
-        <a href="sweet-sour-meatballs.html" class="card-link">
-            <section class="recipe-card">
-                <h2>🧆 Sweet & Sour Meatballs</h2>
-                <p>Savory chopmeat meatballs spiked with horseradish and Tabasco, baked tender and coated in a bold, rich homemade glaze.</p>
-                <div><img src="images/sweet-sour-meatballs.jpg" alt="Sweet and Sour Meatballs" class="recipe-photo"></div>
-                <table>
-                    <tr><th>Prep Time</th><th>Bake Time</th><th>Servings</th></tr>
-                    <tr><td>20 mins</td><td>20 mins</td><td>4-6 people</td></tr>
-                </table>
-                <table>
-                    <tr><th>Calories</th><th>Protein</th><th>Carbs</th><th>Fats</th></tr>
-                    <tr><td>410 kcal</td><td>26g</td><td>32g</td><td>18g</td></tr>
-                </table>
-            </section>
-        </a>
-
-        <!-- 18. Vidalia Onion Spread Card Link -->
-        <a href="onion-spread.html" class="card-link">
-            <section class="recipe-card">
-                <h2>🧅 Vidalia Onion Spread</h2>
-                <p>A sweet, deeply caramelized roasted Vidalia onion and garlic spread blended with fresh chives.</p>
-                <div><img src="images/onion-spread.jpg" alt="Vidalia Onion Spread" class="recipe-photo"></div>
-                <table>
-                    <tr><th>Prep Time</th><th>Cook Time</th><th>Servings</th></tr>
-                    <tr><td>15 mins</td><td>40 mins</td><td>8 servings</td></tr>
-                </table>
-                <table>
-                    <tr><th>Calories</th><th>Protein</th><th>Carbs</th><th>Fats</th></tr>
-                    <tr><td>95 kcal</td><td>1g</td><td>12g</td><td>5g</td></tr>
-                </table>
-            </section>
-        </a>
-
-        <!-- 19. Wellesley Fudge Cake Card Link -->
-        <a href="fudge-cake.html" class="card-link">
-            <section class="recipe-card">
-                <h2>🎂 Wellesley Fudge Cake</h2>
-                <p>A rich, traditional chocolate fudge layer cake topped with a velvety, smooth, homemade chocolate frosting.</p>
-                <div><img src="images/fudge-cake.jpg" alt="Wellesley Fudge Cake" class="recipe-photo"></div>
-                <table>
-                    <tr><th>Prep Time</th><th>Cook Time</th><th>Yield</th></tr>
-                    <tr><td>25 mins</td><td>35 mins</td><td>2 layers</td></tr>
-                </table>
-                <table>
-                    <tr><th>Calories</th><th>Protein</th><th>Carbs</th><th>Fats</th></tr>
-                    <tr><td>380 kcal</td><td>4g</td><td>54g</td><td>16g</td></tr>
-                </table>
-            </section>
-        </a>
-         
-    </div> <!-- Closes the recipe-grid layout -->
-
-    <!-- Centered Back to Top layout anchor at the absolute footer base -->
-    <div style="text-align: center; margin: 40px 0 20px 0;">
-        <a href="#top" class="back-link">Back to Top ↑</a>
+            <h2>Instructions</h2>
+            <ol id="overlay-instructions"></ol>
+        </div>
     </div>
-</body>
-</html>            
+
+    <!-- Connecting the script files sequentially -->
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>          
