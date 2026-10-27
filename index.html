@@ -62,16 +62,36 @@
         <h2>Featured Recipes</h2> 
         <p>Welcome to The Ultimate Recipe Vault! Here you'll find the most delicious recipes available online! Browse our fine selection of recipes and start cooking now!</p>   
 
-        <!-- Pointers aligned directly to script selectors -->
-        <label for="recipe-selector">Choose a recipe from the vault:</label>
-        <select id="recipe-selector">
-            <option value="">-- Select a Dish --</option>
-            <!-- JavaScript data loops will print options here dynamically -->
-        </select>
+        <!-- Isolate your interactive controls into an independent flex-row layout -->
+       <div class="vault-control-panel">
+            <div class="control-item">
+                <label for="recipe-search">Search the vault:</label>
+                <input type="text" id="recipe-search" placeholder="Type a keyword..." aria-label="Search recipes">
+            </div>
+
+            <div class="control-item">
+                <label for="recipe-selector">Choose a recipe from the vault:</label>
+                <select id="recipe-selector">
+                    <option value="">-- Select a Dish --</option>
+                    <!-- JavaScript data loops will print options here dynamically -->
+                </select>
+            </div>
+
+            <!-- New Filter Control Toggle Item -->
+            <div class="control-item" style="justify-content: flex-end; margin-top: auto;">
+                <button id="toggle-favorites" class="favorites-toggle-btn" aria-label="Toggle favorites filtering">Show Favorites ❤️</button>
+            </div>
+        </div>
     </section>
 
     <!-- The Fort Knox Card Container (JavaScript handles printing the cards into here) -->
     <div id="recipe-grid-container" class="recipe-grid"></div>
+     <div id="load-more-container" style="text-align: center; margin: 30px auto 10px auto;">
+        <button id="load-more-btn" class="favorites-toggle-btn" aria-label="Load more recipes from the vault">Load More Recipes ⏳</button>
+    </div> 
+    <div class="top-link-container">
+        <a href="#top" class="back-link">↑ Return to Top</a>
+    </div>
 
     <!-- Immersive Immersive Full-Screen View Overlay Component -->
     <div id="fullscreen-overlay">
@@ -134,6 +154,6 @@
     </div>
 
     <!-- Connecting the script files sequentially -->
-    <script src="data.js"></script>
+    
     <script src="script.js"></script>
 </body>          
